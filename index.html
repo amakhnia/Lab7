@@ -139,6 +139,8 @@
       // the writeup to view the URL pattern for create and update
       function createRecord(input) {
         // TODO
+        document.getElementById("author").defaultValue = "";
+        document.getElementById("title").defaultValue = "";
       
         let inputAuthor = document.getElementById("author").value;
         let inputTitle = document.getElementById("title").value;
@@ -175,16 +177,17 @@
       // the writeup to view the URL pattern for create and update
       function updateRecord(input) {
         // TODO
-        document.getElementById("author").value = "";
-        document.getElementById("title").value = "";
+        document.getElementById("author").defaultValue = "";
+        document.getElementById("title").defaultValue = "";
+        document.getElementById("recordID").defaultValue = "";
+        
         let inputAuthor = document.getElementById("author").value;
         let inputTitle = document.getElementById("title").value;
         let inputId = document.getElementById("recordID").value;
         document.getElementById("recordForm").style = "display: block";
         document.getElementById("recordIDcontainer").style = "display: block";
         let output = document.getElementById("output");
-        // let prmt = prompt("Enter record id");
-
+        
         if(input=="submit"){
           fetch(document.getElementById("endpoint").value + "/" + inputId, {
             method: 'PUT',
@@ -205,7 +208,12 @@
           .then((data) => {
             document.getElementById("recordForm").style = "display: none";
             document.getElementById("recordIDcontainer").style = "display: none";
-            output.textContent = JSON.stringify(data);
+            if(data=='Not Found'){
+              output.textContent = "Network Error: 404";
+            }
+            else{
+              output.textContent = JSON.stringify(data);
+            }
           });}
       }
 
@@ -230,7 +238,12 @@
             return response.json();
           })
           .then((data) => {
-            output.textContent = JSON.stringify(data);
+            if(data=='Not Found'){
+              output.textContent = "Network Error: 404";
+            }
+            else{
+              output.textContent = JSON.stringify(data);
+            }
           });
       }
 
