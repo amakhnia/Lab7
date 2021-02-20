@@ -139,9 +139,6 @@
       // the writeup to view the URL pattern for create and update
       function createRecord(input) {
         // TODO
-        document.getElementById("author").defaultValue = "";
-        document.getElementById("title").defaultValue = "";
-      
         let inputAuthor = document.getElementById("author").value;
         let inputTitle = document.getElementById("title").value;
         document.getElementById("recordForm").style = "display: block";
@@ -167,6 +164,8 @@
           })
           .then((data) => {
             output.textContent = JSON.stringify(data);
+            document.getElementById("author").value = "";
+            document.getElementById("title").value = "";
           });
         }
       }
@@ -176,11 +175,7 @@
       // The main difference from createRecord() will be the URL you send data to; check
       // the writeup to view the URL pattern for create and update
       function updateRecord(input) {
-        // TODO
-        document.getElementById("author").defaultValue = "";
-        document.getElementById("title").defaultValue = "";
-        document.getElementById("recordID").defaultValue = "";
-        
+        // TODO     
         let inputAuthor = document.getElementById("author").value;
         let inputTitle = document.getElementById("title").value;
         let inputId = document.getElementById("recordID").value;
@@ -206,14 +201,15 @@
             return response.json();
           })
           .then((data) => {
-            document.getElementById("recordForm").style = "display: none";
-            document.getElementById("recordIDcontainer").style = "display: none";
             if(data=='Not Found'){
               output.textContent = "Network Error: 404";
             }
             else{
               output.textContent = JSON.stringify(data);
             }
+            document.getElementById("author").value = "";
+            document.getElementById("title").value = "";
+            document.getElementById("recordID").value = "";
           });}
       }
 
@@ -224,6 +220,8 @@
       // delete all, only delete one.
       function deleteRecord() {
         // TODO
+        document.getElementById("recordForm").style = "display: none";
+        document.getElementById("recordIDcontainer").style = "display: none";
         let output = document.getElementById("output");
         let prmt = prompt("Enter record id");
 
