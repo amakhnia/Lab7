@@ -85,6 +85,10 @@
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchAll() {
         // TODO
+        document.getElementById("author").style = "display: none";
+        document.getElementById("title").style = "display: none";
+        document.getElementById("recordForm").style = "display: none";
+        document.getElementById("recordIDcontainer").style = "display: none";
         let output = document.getElementById("output");
 
         fetch(document.getElementById("endpoint").value)
@@ -107,6 +111,10 @@
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchOne() {
         // TODO
+        document.getElementById("author").style = "display: none";
+        document.getElementById("title").style = "display: none";
+        document.getElementById("recordForm").style = "display: none";
+        document.getElementById("recordIDcontainer").style = "display: none";
         let output = document.getElementById("output");
         let prmt = prompt("Enter record id");
 
