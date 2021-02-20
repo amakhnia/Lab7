@@ -139,13 +139,18 @@
       // the writeup to view the URL pattern for create and update
       function createRecord(input) {
         // TODO
-        let inputAuthor = document.getElementById("author").value;
-        let inputTitle = document.getElementById("title").value;
-        document.getElementById("recordForm").style = "display: block";
-        document.getElementById("recordIDcontainer").style = "display: none";
-        let output = document.getElementById("output");
+        if(input=="show"){
+          document.getElementById("author").value = "";
+          document.getElementById("title").value = "";
+          document.getElementById("recordForm").style = "display: block";
+          document.getElementById("recordIDcontainer").style = "display: none";
+        }
         
         if(input=="submit"){
+          let inputAuthor = document.getElementById("author").value;
+          let inputTitle = document.getElementById("title").value;
+          let output = document.getElementById("output");
+        
           fetch(document.getElementById("endpoint").value, {
             method: 'POST',
             headers: {'Content-Type': 'application/json',},
@@ -164,8 +169,6 @@
           })
           .then((data) => {
             output.textContent = JSON.stringify(data);
-            document.getElementById("author").value = "";
-            document.getElementById("title").value = "";
           });
         }
       }
@@ -176,14 +179,20 @@
       // the writeup to view the URL pattern for create and update
       function updateRecord(input) {
         // TODO     
-        let inputAuthor = document.getElementById("author").value;
-        let inputTitle = document.getElementById("title").value;
-        let inputId = document.getElementById("recordID").value;
-        document.getElementById("recordForm").style = "display: block";
-        document.getElementById("recordIDcontainer").style = "display: block";
-        let output = document.getElementById("output");
-        
+        if(input=="show"){
+          document.getElementById("author").value = "";
+          document.getElementById("title").value = "";
+          document.getElementById("recordID").value = "";
+          document.getElementById("recordForm").style = "display: block";
+          document.getElementById("recordIDcontainer").style = "display: block";
+        }
+
         if(input=="submit"){
+          let inputAuthor = document.getElementById("author").value;
+          let inputTitle = document.getElementById("title").value;
+          let inputId = document.getElementById("recordID").value;
+          let output = document.getElementById("output");
+          
           fetch(document.getElementById("endpoint").value + "/" + inputId, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json',},
@@ -207,9 +216,6 @@
             else{
               output.textContent = JSON.stringify(data);
             }
-            document.getElementById("author").value = "";
-            document.getElementById("title").value = "";
-            document.getElementById("recordID").value = "";
           });}
       }
 
