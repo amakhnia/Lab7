@@ -130,6 +130,8 @@
       // the writeup to view the URL pattern for create and update
       function createRecord(input) {
         // TODO
+        document.getElementById("author").value = "";
+        document.getElementById("title").value = "";
         let inputAuthor = document.getElementById("author").value;
         let inputTitle = document.getElementById("title").value;
         document.getElementById("recordForm").style = "display: block";
@@ -165,6 +167,8 @@
       // the writeup to view the URL pattern for create and update
       function updateRecord(input) {
         // TODO
+        document.getElementById("author").value = "";
+        document.getElementById("title").value = "";
         let inputAuthor = document.getElementById("author").value;
         let inputTitle = document.getElementById("title").value;
         let inputId = document.getElementById("recordID").value;
